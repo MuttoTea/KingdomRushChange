@@ -1,5 +1,3 @@
-﻿-- chunkname: @./kr1/game_templates.lua
-
 local bit = require("bit")
 local bor = bit.bor
 local band = bit.band
@@ -1341,6 +1339,8 @@ tt.attacks.list[2].cooldown = 20
 tt.attacks.list[2].shoot_time = fts(9)
 tt.attacks.list[2].vis_bans = bor(F_BOSS)
 tt.attacks.list[2].vis_flags = bor(F_MOD, F_RANGED, F_POLYMORPH)
+
+-- 大贝莎
 tt = RT("tower_bfg", "tower")
 
 AC(tt, "attacks", "powers")
@@ -1363,7 +1363,7 @@ tt.powers.missile.enc_icon = 17
 tt.powers.cluster = CC("power")
 tt.powers.cluster.price_base = 250
 tt.powers.cluster.price_inc = 150
-tt.powers.cluster.fragment_count_base = 1
+tt.powers.cluster.fragment_count_base = 2
 tt.powers.cluster.fragment_count_inc = 2
 tt.powers.cluster.enc_icon = 18
 tt.render.sprites[1].animated = false
@@ -1402,6 +1402,8 @@ tt.attacks.list[3] = table.deepclone(tt.attacks.list[1])
 tt.attacks.list[3].bullet = "bomb_bfg_cluster"
 tt.attacks.list[3].cooldown = 17
 tt.attacks.list[3].node_prediction = fts(44)
+
+-- 特斯拉
 tt = RT("tower_tesla", "tower")
 
 AC(tt, "attacks", "powers")
@@ -1452,6 +1454,8 @@ tt.attacks.list[1].sound_shoot = "TeslaAttack"
 tt.attacks.list[2] = CC("aura_attack")
 tt.attacks.list[2].aura = "aura_tesla_overcharge"
 tt.attacks.list[2].bullet_start_offset = v(0, 15)
+
+-- 游侠匿所
 tt = RT("tower_ranger", "tower_archer_1")
 
 AC(tt, "attacks", "powers")
@@ -1503,7 +1507,7 @@ tt.render.sprites[5].name = "idle"
 tt.render.sprites[5].hidden = true
 tt.render.sprites[5].offset = v(31, 15)
 tt.main_script.update = scripts.tower_ranger.update
-tt.attacks.range = 200
+tt.attacks.range = 240
 tt.attacks.list[1] = CC("bullet_attack")
 tt.attacks.list[1].animation = "shoot"
 tt.attacks.list[1].bullet = "arrow_ranger"
@@ -1515,6 +1519,8 @@ tt.attacks.list[1].bullet_start_offset = {
 	v(4, -5)
 }
 tt.sound_events.insert = "ArcherRangerTaunt"
+
+-- 火枪要塞
 tt = RT("tower_musketeer", "tower_archer_1")
 
 AC(tt, "attacks", "powers")
@@ -1531,8 +1537,8 @@ tt.powers.sniper = CC("power")
 tt.powers.sniper.attack_idx = 2
 tt.powers.sniper.price_base = 250
 tt.powers.sniper.price_inc = 250
-tt.powers.sniper.damage_factor_inc = 0.2
-tt.powers.sniper.instakill_chance_inc = 0.2
+tt.powers.sniper.damage_factor_inc = 0.3
+tt.powers.sniper.instakill_chance_inc = 0.3
 tt.powers.sniper.enc_icon = 3
 tt.powers.shrapnel = CC("power")
 tt.powers.shrapnel.attack_idx = 3
@@ -1610,9 +1616,9 @@ tt.attacks.list[4].animation_seeker = "cannon_fuse"
 tt.attacks.list[4].bullet = "bomb_musketeer"
 tt.attacks.list[4].loops = 6
 tt.attacks.list[4].bullet_start_offset = tt.attacks.list[1].bullet_start_offset
-tt.attacks.list[4].cooldown = 9
+tt.attacks.list[4].cooldown = 8.5
 tt.attacks.list[4].power_name = "shrapnel"
-tt.attacks.list[4].range = tt.attacks.range * 0.5
+tt.attacks.list[4].range = tt.attacks.range
 tt.attacks.list[4].shoot_time = fts(16)
 tt.attacks.list[4].node_prediction = fts(6)
 tt.attacks.list[4].min_spread = 12.5
@@ -1638,8 +1644,8 @@ tt.powers.shield.price_inc = 100
 tt.powers.shield.max_level = 1
 tt.powers.shield.enc_icon = 7
 tt.powers.holystrike = E:clone_c("power")
-tt.powers.holystrike.price_base = 220
-tt.powers.holystrike.price_inc = 150
+tt.powers.holystrike.price_base = 320
+tt.powers.holystrike.price_inc = 250
 tt.powers.holystrike.enc_icon = 5
 tt.powers.holystrike.name = "HOLY_STRIKE"
 tt.barrack.soldier_type = "soldier_paladin"
@@ -1977,8 +1983,8 @@ tt.melee.attacks[3].damage_max = 0
 tt.melee.attacks[3].damage_min = 0
 tt.melee.attacks[3].damage_max_inc = 45
 tt.melee.attacks[3].damage_min_inc = 25
-tt.melee.attacks[3].damage_radius = 50
-tt.melee.attacks[3].damage_type = DAMAGE_PHYSICAL
+tt.melee.attacks[3].damage_radius = 40
+tt.melee.attacks[3].damage_type = DAMAGE_TRUE
 tt.melee.attacks[3].disabled = true
 tt.melee.attacks[3].hit_decal = "decal_paladin_holystrike"
 tt.melee.attacks[3].hit_offset = v(22, 0)
@@ -2619,9 +2625,9 @@ tt.hero.level_stats.armor = {
 	0,
 	0,
 	0,
-	0,
-	0,
-	0
+	0.2,
+	0.2,
+	0.2
 }
 tt.hero.level_stats.hp_max = {
 	250,
@@ -2645,7 +2651,7 @@ tt.hero.level_stats.melee_damage_max = {
 	18,
 	20,
 	23,
-	25
+	27
 }
 tt.hero.level_stats.melee_damage_min = {
 	2,
@@ -2660,29 +2666,30 @@ tt.hero.level_stats.melee_damage_min = {
 	17
 }
 tt.hero.level_stats.ranged_damage_max = {
-	12,
-	14,
-	15,
-	17,
-	18,
-	20,
-	21,
-	23,
+	22,
 	24,
-	26
+	25,
+	27,
+	28,
+	30,
+	31,
+	33,
+	34,
+	36
 }
 tt.hero.level_stats.ranged_damage_min = {
-	7,
-	8,
-	9,
-	10,
-	11,
-	12,
-	13,
-	14,
-	14,
-	15
+	17,
+	18,
+	19,
+	20,
+	21,
+	22,
+	23,
+	24,
+	24,
+	25
 }
+
 tt.hero.level_stats.regen_health = {
 	63,
 	68,
@@ -2696,7 +2703,7 @@ tt.hero.level_stats.regen_health = {
 	108
 }
 tt.hero.skills.multishot = CC("hero_skill")
-tt.hero.skills.multishot.count_base = 1
+tt.hero.skills.multishot.count_base = 2
 tt.hero.skills.multishot.count_inc = 1
 tt.hero.skills.multishot.xp_level_steps = {
 	nil,
@@ -2718,7 +2725,8 @@ tt.hero.skills.callofwild.damage_max_base = 4
 tt.hero.skills.callofwild.damage_min_base = 2
 tt.hero.skills.callofwild.damage_inc = 4
 tt.hero.skills.callofwild.hp_base = 0
-tt.hero.skills.callofwild.hp_inc = 200
+tt.hero.skills.callofwild.hp_inc = 300
+tt.hero.skills.callofwild.armor = 0.2
 tt.hero.skills.callofwild.xp_gain = {
 	50,
 	100,
@@ -2774,7 +2782,7 @@ tt.ranged.attacks[2].bullet_start_offset = {
 }
 tt.ranged.attacks[2].cooldown = 3 + fts(29)
 tt.ranged.attacks[2].disabled = true
-tt.ranged.attacks[2].max_range = 150
+tt.ranged.attacks[2].max_range = 150 * 1.5
 tt.ranged.attacks[2].min_range = 45
 tt.ranged.attacks[2].node_prediction = fts(13)
 tt.ranged.attacks[2].shoot_time = fts(13)
@@ -3105,7 +3113,8 @@ tt.hero.skills.mirage = CC("hero_skill")
 tt.hero.skills.mirage.count = {
 	1,
 	2,
-	3
+	3,
+	4
 }
 tt.hero.skills.mirage.health_factor = 0.3
 tt.hero.skills.mirage.damage_factor = 0.2
@@ -3113,16 +3122,17 @@ tt.hero.skills.mirage.xp_level_steps = {
 	nil,
 	1,
 	nil,
-	nil,
 	2,
 	nil,
+	3,
 	nil,
-	3
+	4
 }
 tt.hero.skills.mirage.xp_gain = {
 	50,
 	100,
-	150
+	150,
+	200
 }
 tt.hero.skills.arcane_rain = CC("hero_skill")
 tt.hero.skills.arcane_rain.count = {
@@ -3202,6 +3212,12 @@ tt.timed_attacks.list[1].entity_rotations = {
 		d2r(0),
 		d2r(120),
 		d2r(240)
+	},
+	{
+		d2r(0),
+		d2r(90),
+		d2r(270),
+		d2r(180)
 	}
 }
 tt.timed_attacks.list[1].sound = "HeroMageShadows"
@@ -5008,8 +5024,8 @@ anchor_x, anchor_y = 0.5, 0.2
 image_x, image_y = 60, 60
 tt.enemy.gold = 10
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 100
-tt.health.magic_armor = 0.85
+tt.health.hp_max = 160
+tt.health.magic_armor = 0.8
 tt.health_bar.offset = v(0, 33)
 tt.info.i18n_key = "ENEMY_SHAMAN"
 tt.info.enc_icon = 3
@@ -5039,8 +5055,8 @@ tt.unit.mod_offset = v(adx(30), ady(20))
 tt = RT("enemy_gargoyle", "enemy")
 anchor_x, anchor_y = 0.5, 0
 image_x, image_y = 58, 88
-tt.enemy.gold = 12
-tt.health.hp_max = 90
+tt.enemy.gold = 8
+tt.health.hp_max = 180
 tt.health_bar.offset = v(adx(29), ady(69))
 tt.info.i18n_key = "ENEMY_GARGOYLE"
 tt.info.enc_icon = 10
@@ -5074,7 +5090,7 @@ image_x, image_y = 86, 80
 tt.enemy.gold = 50
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(24, 0)
-tt.health.hp_max = 800
+tt.health.hp_max = 1000
 tt.health_bar.offset = v(0, 53)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_OGRE"
@@ -5197,10 +5213,10 @@ AC(tt, "melee")
 
 anchor_x, anchor_y = 0.5, 0.2
 image_x, image_y = 50, 38
-tt.enemy.gold = 15
+tt.enemy.gold = 10
 tt.enemy.melee_slot = v(18, 0)
 tt.health.armor = 0.5
-tt.health.hp_max = 160
+tt.health.hp_max = 200
 tt.health_bar.offset = v(0, 31)
 tt.info.i18n_key = "ENEMY_BRIGAND"
 tt.info.enc_icon = 6
@@ -5224,7 +5240,7 @@ image_x, image_y = 64, 46
 tt.enemy.gold = 25
 tt.enemy.melee_slot = v(24, 0)
 tt.health.armor = 0.8
-tt.health.hp_max = 300
+tt.health.hp_max = 450
 tt.health_bar.offset = v(0, 35)
 tt.info.i18n_key = "ENEMY_DARK_KNIGHT"
 tt.info.enc_icon = 12
@@ -5240,17 +5256,19 @@ tt.sound_events.death = "DeathHuman"
 tt.unit.hit_offset = v(0, 16)
 tt.unit.mod_offset = v(adx(32), ady(20))
 tt.unit.marker_offset.y = -2
+
+-- 掠夺者
 tt = RT("enemy_marauder", "enemy")
 
 AC(tt, "melee")
 
 anchor_x, anchor_y = 0.5, 0.22
 image_x, image_y = 78, 56
-tt.enemy.gold = 40
+tt.enemy.gold = 30
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(24, 0)
 tt.health.armor = 0.6
-tt.health.hp_max = 600
+tt.health.hp_max = 700
 tt.health_bar.offset = v(0, 48)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_MARAUDER"
@@ -5269,6 +5287,8 @@ tt.unit.can_explode = false
 tt.unit.hit_offset = v(0, 20)
 tt.unit.mod_offset = v(adx(39), ady(24))
 tt.unit.size = UNIT_SIZE_MEDIUM
+
+-- 强盗
 tt = RT("enemy_bandit", "enemy")
 
 AC(tt, "melee", "dodge")
@@ -5277,9 +5297,9 @@ anchor_x, anchor_y = 0.5, 0.2
 image_x, image_y = 48, 34
 tt.dodge.chance = 0.5
 tt.dodge.silent = true
-tt.enemy.gold = 8
+tt.enemy.gold = 6
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 70
+tt.health.hp_max = 90
 tt.health_bar.offset = v(0, 30)
 tt.info.i18n_key = "ENEMY_BANDIT"
 tt.info.enc_icon = 5
@@ -5305,7 +5325,7 @@ tt.enemy.gold = 100
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(24, 0)
 tt.health.armor = 0.95
-tt.health.hp_max = 1200
+tt.health.hp_max = 1500
 tt.health_bar.offset = v(0, 50)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_SLAYER"
@@ -5368,7 +5388,7 @@ tt.auras.list[1].name = "aura_troll_regen"
 tt.auras.list[1].cooldown = 0
 tt.enemy.gold = 25
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 280
+tt.health.hp_max = 480
 tt.info.i18n_key = "ENEMY_TROLL"
 tt.info.enc_icon = 17
 tt.info.portrait = IS_PHONE and "portraits_sc_0029" or "info_portraits_sc_0029"
@@ -5425,7 +5445,7 @@ image_x, image_y = 100, 80
 tt.enemy.gold = 120
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(25, 0)
-tt.health.hp_max = 2000
+tt.health.hp_max = 3000
 tt.health_bar.offset = v(0, 56)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_YETI"
@@ -5468,7 +5488,7 @@ tt.auras.list[1].cooldown = 0
 tt.enemy.gold = 200
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(35, 0)
-tt.health.hp_max = 4000
+tt.health.hp_max = 4400
 tt.health_bar.offset = v(0, 76)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_FOREST_TROLL"
@@ -5509,7 +5529,7 @@ image_x, image_y = 70, 48
 tt.enemy.gold = 30
 tt.enemy.melee_slot = v(18, 0)
 tt.health.armor = 0.8
-tt.health.hp_max = 400
+tt.health.hp_max = 800
 tt.health_bar.offset = v(0, 36)
 tt.info.i18n_key = "ENEMY_ORC_ARMORED"
 tt.info.enc_icon = IS_PHONE and 37 or 36
@@ -5571,10 +5591,10 @@ image_x, image_y = 60, 50
 tt.auras.list[1] = E:clone_c("aura_attack")
 tt.auras.list[1].cooldown = 0
 tt.auras.list[1].name = "aura_troll_axe_thrower_regen"
-tt.enemy.gold = 50
+tt.enemy.gold = 25
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 600
+tt.health.hp_max = 1000
 tt.health_bar.offset = v(0, 43)
 tt.info.i18n_key = "ENEMY_TROLL_AXE_THROWER"
 tt.info.enc_icon = 18
@@ -5609,10 +5629,10 @@ AC(tt, "melee", "ranged")
 
 anchor_x, anchor_y = 0.5, 0.23
 image_x, image_y = 88, 68
-tt.enemy.gold = 50
+tt.enemy.gold = 40
 tt.enemy.melee_slot = v(23, 0)
 tt.health.armor = 0.95
-tt.health.hp_max = 1000
+tt.health.hp_max = 1200
 tt.health_bar.offset = v(0, 49)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_RAIDER"
@@ -5648,10 +5668,10 @@ AC(tt, "melee")
 
 anchor_x, anchor_y = 0.5, 0.23
 image_x, image_y = 154, 118
-tt.enemy.gold = 100
+tt.enemy.gold = 85
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(33, 0)
-tt.health.hp_max = 2800
+tt.health.hp_max = 3200
 tt.health.magic_armor = 0.9
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.health_bar.offset = v(0, 61)
@@ -5687,11 +5707,11 @@ image_x, image_y = 104, 80
 tt.auras.list[1] = E:clone_c("aura_attack")
 tt.auras.list[1].name = "aura_troll_brute_regen"
 tt.auras.list[1].cooldown = 0
-tt.enemy.gold = 150
+tt.enemy.gold = 125
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(35, 0)
 tt.health.armor = 0.6
-tt.health.hp_max = 2800
+tt.health.hp_max = 3400
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.health_bar.offset = v(0, 54)
 tt.info.i18n_key = "ENEMY_TROLL_BRUTE"
@@ -5729,10 +5749,11 @@ image_x, image_y = 78, 58
 tt.auras.list[1] = E:clone_c("aura_attack")
 tt.auras.list[1].name = "aura_troll_chieftain_regen"
 tt.auras.list[1].cooldown = 0
-tt.enemy.gold = 70
+tt.enemy.gold = 55
 tt.enemy.lives_cost = 6
 tt.enemy.melee_slot = v(18, 0)
 tt.health.hp_max = 1200
+tt.health.armor = 0.2
 tt.health_bar.offset = v(0, 46)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_TROLL_CHIEFTAIN"
@@ -5851,9 +5872,9 @@ image_x, image_y = 44, 38
 tt.death_spawns.concurrent_with_death = true
 tt.death_spawns.name = "aura_demon_death"
 tt.death_spawns.delay = 0.11
-tt.enemy.gold = 20
+tt.enemy.gold = 16
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 250
+tt.health.hp_max = 300
 tt.health.magic_armor = 0.6
 tt.health_bar.offset = v(0, 29)
 tt.info.i18n_key = "ENEMY_DEMON"
@@ -5886,8 +5907,8 @@ tt.death_spawns.delay = 0.11
 tt.enemy.gold = 60
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(24, 0)
-tt.health.hp_max = 1000
-tt.health.magic_armor = 0.6
+tt.health.hp_max = 1200
+tt.health.magic_armor = 0.7
 tt.health_bar.offset = v(0, 43)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_DEMON_MAGE"
@@ -5972,7 +5993,7 @@ anchor_x, anchor_y = 0.5, 0
 image_x, image_y = 78, 96
 tt.enemy.gold = 25
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 350
+tt.health.hp_max = 550
 tt.health_bar.offset = v(0, 72)
 tt.info.i18n_key = "ENEMY_DEMON_IMP"
 tt.info.enc_icon = 26
@@ -6006,7 +6027,7 @@ image_x, image_y = 108, 84
 tt.enemy.gold = 100
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(25, 0)
-tt.health.hp_max = 2500
+tt.health.hp_max = 4500
 tt.health_bar.offset = v(0, 62)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.portrait = IS_PHONE and "portraits_sc_0055" or "info_portraits_sc_0055"
@@ -6042,11 +6063,11 @@ AC(tt, "melee")
 
 anchor_x, anchor_y = 0.5, 0.19
 image_x, image_y = 96, 68
-tt.enemy.gold = 80
+tt.enemy.gold = 65
 tt.enemy.melee_slot = v(35, 0)
-tt.health.armor = 0.7
-tt.health.hp_max = 1250
-tt.health.magic_armor = 0.7
+tt.health.armor = 0.8
+tt.health.hp_max = 2450
+tt.health.magic_armor = 0.75
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.health_bar.offset = v(0, 51)
 tt.info.portrait = IS_PHONE and "portraits_sc_0058" or "info_portraits_sc_0058"
@@ -6099,6 +6120,8 @@ tt.unit.hit_offset = v(0, 14)
 tt.unit.marker_offset = v(0, 0)
 tt.unit.mod_offset = v(0, 16)
 tt.unit.show_blood_pool = false
+
+-- 沼泽巨人
 tt = RT("enemy_swamp_thing", "enemy")
 
 AC(tt, "melee", "ranged", "auras")
@@ -6108,10 +6131,10 @@ image_x, image_y = 108, 87
 tt.auras.list[1] = E:clone_c("aura_attack")
 tt.auras.list[1].name = "aura_swamp_thing_regen"
 tt.auras.list[1].cooldown = 0
-tt.enemy.gold = 200
+tt.enemy.gold = 120
 tt.enemy.lives_cost = 5
 tt.enemy.melee_slot = v(40, 0)
-tt.health.hp_max = 3000
+tt.health.hp_max = 3600
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.health_bar.offset = v(0, 69)
 tt.info.i18n_key = "ENEMY_SWAMP_THING"
@@ -6158,7 +6181,7 @@ image_x, image_y = 82, 62
 tt.enemy.gold = 40
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(34, 0)
-tt.health.hp_max = 1000
+tt.health.hp_max = 1400
 tt.health.magic_armor = 0.6
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.health_bar.offset = v(0, 47)
@@ -6219,16 +6242,18 @@ tt.unit.marker_offset = v(0, ady(5))
 tt.unit.mod_offset = v(adx(1), ady(14))
 tt.unit.mod_offset = v(adx(18), ady(13))
 tt.vis.bans = bor(F_POISON, F_SKELETON)
+
+-- 腐化树精
 tt = RT("enemy_rotten_tree", "enemy")
 
 AC(tt, "melee")
 
 anchor_x, anchor_y = 0.5, 0.18421052631578946
 image_x, image_y = 82, 76
-tt.enemy.gold = 60
+tt.enemy.gold = 30
 tt.enemy.melee_slot = v(25, 0)
 tt.health.armor = 0.8
-tt.health.hp_max = 1000
+tt.health.hp_max = 1200
 tt.health_bar.offset = v(0, 57)
 tt.health_bar.type = HEALTH_BAR_SIZE_MEDIUM
 tt.info.i18n_key = "ENEMY_ROTTEN_TREE"
@@ -6374,7 +6399,7 @@ image_x, image_y = 42, 48
 tt.enemy.gold = 10
 tt.enemy.melee_slot = v(18, 0)
 tt.health.armor = 0.4
-tt.health.hp_max = 250
+tt.health.hp_max = 300
 tt.health_bar.offset = v(0, 35)
 tt.info.i18n_key = "ENEMY_ZOMBIE"
 tt.info.enc_icon = 41
@@ -6402,9 +6427,9 @@ AC(tt, "melee", "ranged", "death_spawns")
 anchor_x, anchor_y = 0.5, 0.16666666666666666
 tt.death_spawns.concurrent_with_death = true
 tt.death_spawns.name = "aura_flareon_death"
-tt.enemy.gold = 20
+tt.enemy.gold = 16
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 250
+tt.health.hp_max = 300
 tt.health.magic_armor = 0.8
 tt.health_bar.offset.y = 34
 tt.info.i18n_key = "ENEMY_DEMON_FLAREON"
@@ -6558,7 +6583,8 @@ image_x, image_y = 44, 38
 tt.enemy.gold = 50
 tt.enemy.lives_cost = 3
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 700
+tt.health.hp_max = 1000
+tt.health.magic_armor = 0.2
 tt.health_bar.offset = v(0, 30)
 tt.info.i18n_key = "ENEMY_NECROMANCER"
 tt.info.enc_icon = 29
@@ -6587,7 +6613,7 @@ tt.timed_actions.list[1].cooldown = 8
 tt.timed_actions.list[1].spawn_time = fts(12)
 tt.timed_actions.list[1].spawn_delay = fts(4)
 tt.timed_actions.list[1].entity_chances = {
-	0.05,
+	0.15,
 	1
 }
 tt.timed_actions.list[1].entity_names = {
@@ -6828,9 +6854,9 @@ image_x, image_y = 82, 50
 tt.auras.list[1] = E:clone_c("aura_attack")
 tt.auras.list[1].name = "aura_troll_skater_regen"
 tt.auras.list[1].cooldown = 0
-tt.enemy.gold = 30
+tt.enemy.gold = 25
 tt.enemy.melee_slot = v(18, 0)
-tt.health.hp_max = 350
+tt.health.hp_max = 500
 tt.info.i18n_key = "ENEMY_TROLL_SKATER"
 tt.info.enc_icon = 50
 tt.info.portrait = IS_PHONE and "portraits_sc_0073" or "info_portraits_sc_0073"
@@ -7314,7 +7340,7 @@ tt.enemy.gold = 0
 tt.enemy.lives_cost = 20
 tt.enemy.melee_slot = v(80, 0)
 tt.health.dead_lifetime = 8
-tt.health.hp_max = 18000
+tt.health.hp_max = 22000
 tt.health_bar.type = HEALTH_BAR_SIZE_LARGE
 tt.health_bar.offset = v(0, 108)
 tt.info.i18n_key = "ENEMY_SARELGAZ"
@@ -7556,7 +7582,7 @@ tt.enemy.gold = 0
 tt.enemy.lives_cost = 20
 tt.enemy.melee_slot = v(40, 0)
 tt.health.dead_lifetime = 12
-tt.health.hp_max = 10000
+tt.health.hp_max = 14000
 tt.health_bar.offset = v(0, 90)
 tt.health_bar.type = HEALTH_BAR_SIZE_LARGE
 tt.info.fn = scripts.eb_ulgukhai.get_info
@@ -8042,11 +8068,11 @@ tt.bullet.prediction_error = false
 tt = E:register_t("arrow_multishot_hero_alleria", "arrow")
 tt.bullet.particles_name = "ps_arrow_multishot_hero_alleria"
 tt.bullet.damage_min = 10
-tt.bullet.damage_max = 15
+tt.bullet.damage_max = 25
 tt.bullet.damage_true = DAMAGE_TRUE
 tt.bullet.prediction_error = false
 tt.extra_arrows_range = 100
-tt.extra_arrows = 2
+tt.extra_arrows = 3
 tt.main_script.insert = scripts.arrow_multishot_hero_alleria.insert
 tt.render.sprites[1].name = "hero_archer_arrow"
 tt = RT("axe_troll_axe_thrower", "arrow")
@@ -8208,7 +8234,7 @@ tt = RT("bomb_musketeer", "bomb")
 tt.bullet.damage_max = 0
 tt.bullet.damage_max_inc = 40
 tt.bullet.damage_min = 0
-tt.bullet.damage_min_inc = 10
+tt.bullet.damage_min_inc = 40
 tt.bullet.damage_radius = 48
 tt.bullet.flight_time_min = fts(4)
 tt.bullet.flight_time_max = fts(8)
@@ -8715,7 +8741,7 @@ tt.aura.radius = 200
 tt.aura.vis_flags = bor(F_THORN, F_MOD)
 tt.aura.vis_bans = bor(F_FLYING, F_BOSS)
 tt.aura.cooldown = 8 + fts(34)
-tt.aura.max_times = 3
+tt.aura.max_times = 5
 tt.aura.max_count = 2
 tt.aura.max_count_inc = 2
 tt.aura.min_count = 2
