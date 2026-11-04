@@ -1,14 +1,16 @@
 {
   "schema_version": 1,
-  "release": "GOV-1.1",
+  "release": "GOV-1.2",
   "repository": "MuttoTea/KingdomRushChange",
   "branch_at_distribution": "main",
-  "observed_baseline_head": "6bc1151cee5f313dcfd4bb11f22cd57c051c7df6",
+  "observed_baseline_head": "eaecde7f3234adbb88fc93340cc78f6e998f2053",
   "profile": "generic_current_sources_required",
   "authority": "routing_only_not_live_task_state",
   "common_policy_path": "config/CROSS_PROJECT_WINDOW_INITIALIZATION.md",
-  "common_policy_sha256": "52f20c02a85dcfa402d463caf215428020cb9701c11ff5ea56f314d3fd4ad33b",
-  "read_local_first": [],
+  "common_policy_sha256": "df6079ebe8c3e33545ec6ca404680724ce60854faf971c8fe193be267ff67e9f",
+  "read_local_first": [
+    "AGENTS.md"
+  ],
   "nested_agents_read_when_target_is_under_path": [],
   "protected_project_boundaries": [
     "未把未知旧项目状态推定为正在开发、已冻结或可发布；按本次具体任务读取实际代码/协议/许可。共同治理分发不启动产品改造。"
@@ -16,5 +18,8 @@
   "missing_expected_local_paths": [],
   "missing_path_handling": "缺失不补造；沿项目正式路由定位本分支当前来源。其他分支仅查阅不自动采用/合并，不将未读/未验记成通过。",
   "local_workspace_sync": "not_verified",
-  "actual_new_window_loading": "not_tested"
+  "actual_new_window_loading": "not_tested",
+  "global_branch_creation_rule": "所有项目、任何时候：未经作者明确批准，不得建立任何分支。",
+  "branch_creation_requires": "locatable_explicit_author_approval_for_actual_scope",
+  "naming_policy": "共同正文G19及第6节；专属技术命名保留；不批量重命名历史"
 }
