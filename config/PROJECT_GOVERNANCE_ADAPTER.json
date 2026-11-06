@@ -7,7 +7,7 @@
   "profile": "generic_current_sources_required",
   "authority": "routing_only_not_live_task_state",
   "common_policy_path": "config/CROSS_PROJECT_WINDOW_INITIALIZATION.md",
-  "common_policy_sha256": "df6079ebe8c3e33545ec6ca404680724ce60854faf971c8fe193be267ff67e9f",
+  "common_policy_sha256": "60c037fdf1c5a6e9507e12049ccde4d06497198ceb2c25f679bb0ca27568c6fc",
   "read_local_first": [
     "AGENTS.md"
   ],
@@ -21,5 +21,14 @@
   "actual_new_window_loading": "not_tested",
   "global_branch_creation_rule": "所有项目、任何时候：未经作者明确批准，不得建立任何分支。",
   "branch_creation_requires": "locatable_explicit_author_approval_for_actual_scope",
-  "naming_policy": "共同正文G19及第6节；专属技术命名保留；不批量重命名历史"
+  "naming_policy": "共同正文G19及第6节；专属技术命名保留；不批量重命名历史",
+  "blocked_issue_stop_rule": {
+    "amendment": "STOP-3/2026-11-06",
+    "policy": "共同正文第7节",
+    "attempt_limit": 3,
+    "count_scope": "same_substantive_blocker_across_agents_models_methods_windows",
+    "stopped_does_not_mean_pass": true,
+    "local_workspace_sync": "not_verified",
+    "actual_new_window_loading": "not_tested"
+  }
 }
