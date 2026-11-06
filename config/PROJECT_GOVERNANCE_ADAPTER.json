@@ -1,13 +1,13 @@
 {
   "schema_version": 1,
-  "release": "GOV-1.2",
+  "release": "GOV-1.3",
   "repository": "MuttoTea/KingdomRushChange",
   "branch_at_distribution": "main",
   "observed_baseline_head": "eaecde7f3234adbb88fc93340cc78f6e998f2053",
   "profile": "generic_current_sources_required",
   "authority": "routing_only_not_live_task_state",
   "common_policy_path": "config/CROSS_PROJECT_WINDOW_INITIALIZATION.md",
-  "common_policy_sha256": "60c037fdf1c5a6e9507e12049ccde4d06497198ceb2c25f679bb0ca27568c6fc",
+  "common_policy_sha256": "6e2b52ca4efe3fe086d4caf6889bdf405d650e2c8ef35e3f6c3f491454ca833e",
   "read_local_first": [
     "AGENTS.md"
   ],
